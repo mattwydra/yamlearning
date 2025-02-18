@@ -13,8 +13,9 @@ Project 1: Hello World Workflow
 Goal: Learn basic GitHub Actions with a simple workflow that outputs "Hello, World!" in the logs.
 
 Steps:
-Create .github/workflows/hello-world.yml in your repository.
-Add the following code:```yaml
+Create ```.github/workflows/hello-world.yml``` in your repository.
+Add the following code:
+```
 name: Hello World
 
    on:
@@ -29,7 +30,8 @@ main
        steps:
          
 name: Print Hello World
-         run: echo "Hello, World!"```
+         run: echo "Hello, World!"
+```
 What It Does: 
 Triggers when you push to the main branch.
 Runs a job called say-hello on an Ubuntu runner.
@@ -51,7 +53,9 @@ Add an index.html file in the root of your repository with the content:
     <h1>Hello, World!</h1>
 </body>
 </html>
-Create .github/workflows/deploy.yml:```yaml
+Create .github/workflows/deploy.yml:
+
+```
 name: Deploy to GitHub Pages
 
    on:
@@ -74,7 +78,8 @@ name: Setup Pages
 
          
 name: Deploy to GitHub Pages
-         uses: actions/deploy-pages@v2```
+         uses: actions/deploy-pages@v2
+```
 What It Does:
 Triggers on push to main.
 Checks out the repository.
@@ -89,14 +94,17 @@ Goal: Deploy a Node.js app to a platform like Heroku using GitHub Actions.
 
 Steps:
 Create a basic Node.js app:
+```
 // server.js
 const http = require('http');
 const PORT = process.env.PORT || 3000;
 http.createServer((req, res) => {
     res.end('Hello, World!');
 }).listen(PORT, () => console.log(`Server running on port ${PORT}`));
+```
 
 Add a package.json:
+```
 {
   "name": "node-app",
   "version": "1.0.0",
@@ -105,8 +113,10 @@ Add a package.json:
     "start": "node server.js"
   }
 }
+```
 
-Create .github/workflows/deploy.yml:```yaml
+Create .github/workflows/deploy.yml:
+```
 name: Deploy to Heroku
 
    on:
@@ -140,7 +150,8 @@ name: Deploy to Heroku
          run: |
            echo "Deploying to Heroku..."
            npx heroku git:remote -a your-app-name
-           git push heroku main```
+           git push heroku main
+```
 
 What It Does:
 Deploys your Node.js app to Heroku on push to main.
@@ -150,6 +161,7 @@ Objective: Deploy a "Hello World" HTML page to GitHub Pages using GitHub Actions
 
 Create a Repository:
 Add an index.html file with the content:
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -159,9 +171,12 @@ Add an index.html file with the content:
   <h1>Hello, GitHub Pages!</h1>
 </body>
 </html>
+```
 
 Add deploy.yml:
-Create .github/workflows/deploy.yml:```yaml
+Create 
+```.github/workflows/deploy.yml:```
+```
 name: Deploy to GitHub Pages
 
      on:
@@ -183,7 +198,8 @@ name: Deploy to GitHub Pages
            uses: peaceiris/actions-gh-pages@v3
            with:
              github_token: ${{ secrets.GITHUB_TOKEN }}
-             publish_dir: .```
+             publish_dir: .
+```
 
 Push the Code:
 Push the main branch. Your page will be deployed to <username>.github.io/<repository>.
@@ -194,7 +210,8 @@ Project 2: Deploy a Python Flask App to Heroku
 Objective: Deploy a simple Flask application to Heroku.
 
 Create a Flask App:
-Add app.py:```python
+Add app.py:
+```
 from flask import Flask
 
      app = Flask(name)
@@ -205,22 +222,28 @@ from flask import Flask
 
      if name == "main":
          app.run()
+```
      
    - Add `requirements.txt`:
      
 
+```
      Flask==2.2.3
      gunicorn==20.1.0
+```
      
    - Add `Procfile`:
      
 
+```
      web: gunicorn app:app
+```
      
 2. **Create `deploy.yml`:**
    - Create `.github/workflows/deploy.yml`:
      
-yaml
+
+```
      name: Deploy to Heroku
 
      on:
@@ -251,7 +274,8 @@ name: Deploy to Heroku
            with:
              heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
              heroku_app_name: your-heroku-app-name
-             heroku_email: your-heroku-email@example.com```
+             heroku_email: your-heroku-email@example.com
+```
 
 Set Up Secrets:
 Add HEROKU_API_KEY to your repository secrets in GitHub.
@@ -264,7 +288,8 @@ Project 3: Deploy a Dockerized Node.js App to AWS ECS
 Objective: Deploy a Dockerized Node.js app to AWS Elastic Container Service (ECS).
 
 Create a Node.js App:
-Add app.js:```javascript
+Add app.js:
+```
 const express = require('express');
 const app = express();
 
@@ -275,10 +300,12 @@ const app = express();
      app.listen(3000, () => {
          console.log('Server running on port 3000');
      });
+```
      
    - Add `package.json`:
      
-json
+
+```
      {
        "name": "ecs-deploy",
        "version": "1.0.0",
@@ -290,10 +317,12 @@ json
          "start": "node app.js"
        }
      }
+```
      
    - Add `Dockerfile`:
      
 
+```
      FROM node:16
 
      WORKDIR /app
@@ -301,10 +330,12 @@ json
      RUN npm install
      COPY . .
      CMD ["npm", "start"]
+```
      
 2. **Create `deploy.yml`:**
    - Create `.github/workflows/deploy.yml`:
      
+```
 yaml
      name: Deploy to AWS ECS
 
@@ -341,7 +372,8 @@ name: Deploy to ECS
              task-definition: ecs-task-definition.json
              service: <ecs_service_name>
              cluster: <ecs_cluster_name>
-             wait-for-service-stability: true```
+             wait-for-service-stability: true
+```
 
 Set Up AWS Secrets:
 Add AWS credentials (AWS_ACCESS_KEY_ID, AWS_SECRET_ACCESS_KEY) to GitHub secrets.
