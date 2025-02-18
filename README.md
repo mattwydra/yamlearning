@@ -9,7 +9,9 @@ Steps: Steps perform actions like running scripts, building code, or deploying a
 
 ---
 
-Project 1: Hello World Workflow
+# Easy Projects 
+
+## Project 1: Hello World Workflow
 Goal: Learn basic GitHub Actions with a simple workflow that outputs "Hello, World!" in the logs.
 
 Steps:
@@ -37,7 +39,7 @@ Executes a step that prints "Hello, World!" to the log.
 
 ---
 
-Project 2: Static Website Deployment
+## Project 2: Static Website Deployment
 Goal: Deploy a static "Hello World" website to GitHub Pages.
 
 Steps:
@@ -87,7 +89,7 @@ Challenge: Ensure GitHub Pages is enabled in the repository settings.
 
 ---
 
-Project 3: Deploy Node.js App
+## Project 3: Deploy Node.js App
 Goal: Deploy a Node.js app to a platform like Heroku using GitHub Actions.
 
 Steps:
@@ -154,7 +156,12 @@ name: Deploy to Heroku
 What It Does:
 Deploys your Node.js app to Heroku on push to main.
 Requires you to create a Heroku app and set the HEROKU_API_KEY as a repository secret.
-AProject 1: Deploy a Static HTML Page to GitHub Pages
+
+---
+
+# Intermediate Projects
+
+## Project 1: Deploy a Static HTML Page to GitHub Pages
 Objective: Deploy a "Hello World" HTML page to GitHub Pages using GitHub Actions.
 
 Create a Repository:
@@ -204,7 +211,7 @@ Push the main branch. Your page will be deployed to <username>.github.io/<reposi
 
 ---
 
-Project 2: Deploy a Python Flask App to Heroku
+## Project 2: Deploy a Python Flask App to Heroku
 Objective: Deploy a simple Flask application to Heroku.
 
 Create a Flask App:
@@ -282,7 +289,7 @@ Push the Code:
 Push the main branch. The app will be live on Heroku.
 ———
 
-Project 3: Deploy a Dockerized Node.js App to AWS ECS
+## Project 3: Deploy a Dockerized Node.js App to AWS ECS
 Objective: Deploy a Dockerized Node.js app to AWS Elastic Container Service (ECS).
 
 Create a Node.js App:
