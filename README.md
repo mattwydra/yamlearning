@@ -44,6 +44,7 @@ Goal: Deploy a static "Hello World" website to GitHub Pages.
 
 Steps:
 Add an index.html file in the root of your repository with the content:
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,6 +54,7 @@ Add an index.html file in the root of your repository with the content:
     <h1>Hello, World!</h1>
 </body>
 </html>
+```
 Create .github/workflows/deploy.yml:
 
 ```
