@@ -18,19 +18,17 @@ Add the following code:
 ```
 name: Hello World
 
-   on:
-     push:
-       branches:
-         
-main
+on:
+  push:
+    branches:
+      - main
 
-   jobs:
-     say-hello:
-       runs-on: ubuntu-latest
-       steps:
-         
-name: Print Hello World
-         run: echo "Hello, World!"
+jobs:
+  say-hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Hello World
+        run: echo "Hello, World!"
 ```
 What It Does: 
 Triggers when you push to the main branch.
