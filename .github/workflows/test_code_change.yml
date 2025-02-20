@@ -16,10 +16,17 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v3
 
+    - name: Debug script.js
+      run: |
+        cat script.js  # Check the initial content of script.js
+
     - name: Replace message in script.js
       run: |
-        # Replace message in script.js with a new value
-        sed -i 's/This is the original message from script.js./This is the updated message after deployment./' script.js
+        sed -i 's|This is the original message from script.js.|This is the updated message after deployment.|' script.js
+
+    - name: Debug script.js (After replacement)
+      run: |
+        cat script.js  # Check the content of script.js after replacement
 
     - name: Deploy to GitHub Pages
       uses: peaceiris/actions-gh-pages@v3
