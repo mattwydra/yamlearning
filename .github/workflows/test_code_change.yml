@@ -1,0 +1,31 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main  # Or use your specific branch
+
+permissions:
+  contents: write  # Grant permission to write to repository contents
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Replace message in script.js
+      run: |
+        # Replace message in script.js with a new value
+        sed -i 's/This is the original message from script.js./This is the updated message after deployment./' script.js
+
+    - name: Deploy to GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        publish_dir: ./  # This is where your static files are located
+        user_name: 'github-actions'
+        user_email: 'github-actions@users.noreply.github.com'
+        publish_branch: gh-pages  # Branch to push the changes to
+        github_token: ${{ secrets.GITHUB_TOKEN }}  # Use the GitHub token for authentication
