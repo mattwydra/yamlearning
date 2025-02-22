@@ -25,5 +25,8 @@ jobs:
         with:
           path: ./  # Change if your site is in "dist" or "public"
 
+      - name: Force JavaScript update
+        run: mv script.js script.js?$(date +%s)
+
       - name: Deploy to GitHub Pages
         uses: actions/deploy-pages@v2
