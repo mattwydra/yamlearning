@@ -1,2 +1,1 @@
-{ "apiKey": "12345-FAKE-API-67890
-" }
+{ apiKey: "$API_KEY" }
