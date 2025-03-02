@@ -1,0 +1,25 @@
+name: Generate Timestamp File
+
+on: 
+  push:
+    branches:
+      - main  # Runs when you push to the main branch
+
+jobs:
+  create-file:
+    runs-on: ubuntu-latest  # The virtual machine the job runs on
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3  # Pulls your repo into the VM
+
+      - name: Generate timestamp file
+        run: echo "Generated on $(date)" > timestamp.txt  # Creates the file
+
+      - name: Commit and push the file
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add timestamp.txt
+          git commit -m "Auto-generated timestamp"
+          git push
